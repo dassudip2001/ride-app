@@ -22,6 +22,14 @@ class User extends Authenticatable
         'password',
     ];
 
+
+    public function routeNotificationFor()
+    {
+        return $this->phone;
+
+    }
+
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -31,4 +39,11 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function  driv(){
+        return $this->hasOne(Driver::class);
+    }
+    public  function trips(){
+        return $this->hasMany(Trip::class);
+    }
 }

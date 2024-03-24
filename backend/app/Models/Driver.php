@@ -8,4 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Driver extends Model
 {
     use HasFactory;
+
+    protected $table = 'drivers';
+protected $fillable = [
+    'year',
+    'make',
+    'model',
+    'color',
+    'license_plate',
+    ];
+
+public  function user()
+{
+    return $this->belongsTo(User::class);
+}
+public  function trips()
+{
+    return $this->hasMany(Trip::class);
+}
 }
