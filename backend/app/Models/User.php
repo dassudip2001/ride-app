@@ -17,13 +17,14 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'phone',
+//        'name',
+//        'email',
+//        'password',
     ];
 
 
-    public function routeNotificationFor()
+    public function routeNotificationForTwilio()
     {
         return $this->phone;
 
@@ -36,7 +37,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
+        'login_code',
         'remember_token',
     ];
 

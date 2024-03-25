@@ -8,6 +8,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use NotificationChannels\Twilio\TwilioChannel;
 use NotificationChannels\Twilio\TwilioMmsMessage;
+use NotificationChannels\Twilio\TwilioSmsMessage;
 
 class LoginNeedVarification extends Notification
 {
@@ -34,9 +35,10 @@ class LoginNeedVarification extends Notification
 
     public function toTwilio( $notifiable)
     {
+//        dd($notifiable);
         $loginCode = rand(100000, 999999);
-        $notifiable->update(['otp' => $loginCode]);
-        return (new TwilioMmsMessage())
+        $notifiable->update(['login_code' => $loginCode]);
+        return (new TwilioSmsMessage())
             ->content('Your OTP is ' . $loginCode);
     }
 
